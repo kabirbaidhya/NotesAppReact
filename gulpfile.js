@@ -29,8 +29,8 @@
             }));
     });
 
-    gulp.task('watch', function() {
-        gulp.watch('./assets/js/**/*.js', ['browserify']);
+    gulp.task('watch', ['default'], function() {
+        gulp.watch('./assets/js/**/*.js*', ['browserify']);
         gulp.watch('./assets/scss/**/*.scss', ['sass']);
     });
 
