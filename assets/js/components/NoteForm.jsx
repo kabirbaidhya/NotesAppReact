@@ -2,7 +2,7 @@
 class NoteForm extends React.Component {
     render() {
         return (
-            <div>
+            <section className="form-wrapper">
                 <h3>Add Note</h3>
                 <form>
                     <div className="form-group">
@@ -13,7 +13,7 @@ class NoteForm extends React.Component {
                     </div>
                     <button type="submit" className="btn btn-default">Add</button>
                 </form>
-            </div>
+            </section>
         );
     }
 }

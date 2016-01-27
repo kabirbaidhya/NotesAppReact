@@ -8,8 +8,8 @@ class NoteList extends React.Component {
 
         this.state = {
             notes: [
-                {id: 1, title: 'Foo', previewText: 'This is just a test note.'},
-                {id: 2, title: 'Bar', previewText: 'This is just another test note.'}
+                {id: 1, title: 'Foo', text: 'This is just a test note.'},
+                {id: 2, title: 'Bar', text: 'This is just another test note.'}
             ]
         };
     }
@@ -18,32 +18,32 @@ class NoteList extends React.Component {
         return (this.state.notes.length > 0 );
     }
 
-    listView() {
-
-        return (
-            <div className="note-list list-group">
-                {this.state.notes.map((item) => (
-                    <Note key={item.id} title={item.title} previewText={item.previewText} />
-                ))}
-            </div>
-        );
-    }
-
-    emptyMessage() {
-        return (
-            <div className="alert alert-warning">No Notes available</div>
-        );
-    }
-
     render() {
         // If there are notes then render the List view
         // Else show the message
-        if (this.hasNotes()) {
-            return this.listView();
-        } else {
-            return this.emptyMessage();
-        }
+        return (
+            <section className="note-list-wrapper">
+                {this.hasNotes() ? listView(this.state.notes) : emptyMessage()}
+            </section>
+        );
     }
+}
+
+function listView(list) {
+
+    return (
+        <div className="note-list list-group">
+            {list.map(item => (
+                <Note key={item.id} title={item.title} text={item.text} />
+            ))}
+        </div>
+    );
+}
+
+function emptyMessage() {
+    return (
+        <div className="alert alert-warning">No Notes available</div>
+    );
 }
 
 export default NoteList;

@@ -7,12 +7,8 @@ class App extends React.Component {
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                <section className="note-list-wrapper">
-                    <NoteList />
-                </section>
-                <section className="form-wrapper">
-                    <NoteForm />
-                </section>
+                <NoteList />
+                <NoteForm />
             </div>
         );
     }

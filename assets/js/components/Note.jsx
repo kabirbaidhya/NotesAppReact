@@ -4,7 +4,7 @@ class Note extends React.Component {
         return (
             <a key={this.props.id} className="note list-group-item">
                 <h4>{this.props.title}</h4>
-                <p className="preview-text list-group-item-text">{this.props.previewText}</p>
+                <p className="preview-text list-group-item-text">{this.props.text}</p>
             </a>
         );
     }
