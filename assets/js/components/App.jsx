@@ -1,6 +1,7 @@
 
 import NoteList from './NoteList.jsx';
 import NoteForm from './NoteForm.jsx';
+import Note from '../services/Note.js';
 
 class App extends React.Component {
 
@@ -8,24 +9,12 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            notes: [
-                {id: 1, title: 'Foo', text: 'This is just a test note.'},
-                {id: 2, title: 'Bar', text: 'This is just another test note.'}
-            ]
+            notes: Note.fetchAll()
         };
     }
 
-    // TODO: Separation of Concern! Move this logic to a separate class
-    createNote(data) {
-        // Generate a random note id for the timebeing
-        data.id = Math.ceil(Math.random() * 100);
-
-        return data;
-    }
-
     handleAdd(data) {
-        // Note: Create Note
-        var note = this.createNote(data);
+        var note = Note.create(data);
 
         this.setState({
             notes: this.state.notes.concat([note])
