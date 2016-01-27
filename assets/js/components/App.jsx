@@ -15,12 +15,30 @@ class App extends React.Component {
         };
     }
 
+    // TODO: Separation of Concern! Move this logic to a separate class
+    createNote(data) {
+        // Generate a random note id for the timebeing
+        data.id = Math.ceil(Math.random() * 100);
+
+        return data;
+    }
+
+    handleAdd(data) {
+        // Note: Create Note
+        var note = this.createNote(data);
+
+        this.setState({
+            notes: this.state.notes.concat([note])
+        });
+    }
+
     render() {
         return (
             <div>
                 <h1>{this.props.title}</h1>
+
                 <NoteList items={this.state.notes} />
-                <NoteForm />
+                <NoteForm onAdd={this.handleAdd.bind(this)}/>
             </div>
         );
     }
